@@ -7,8 +7,8 @@ import os
       
 class Dashboard:
 
-    def __init__(self,path):
-        self.path = path
+    def __init__(self):
+        
         #self.df = TreatDataFrame()
         self.df = df = pd.read_excel(f'resultado_bas_corretivos_encerrados_regiao_prioridade.xlsx')
     
@@ -76,6 +76,7 @@ def main():
     
     execute = Dashboard()
     execute.streamlit()
+    
   
     
    
