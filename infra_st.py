@@ -11,6 +11,7 @@ class Dashboard:
         
         #self.df = TreatDataFrame()
         self.df = df = pd.read_excel(f'resultado_bas_corretivos_encerrados_regiao_prioridade.xlsx')
+        self.daf['den'] = self.df['den'].astype(float)
     
     
     
@@ -161,7 +162,7 @@ class Dashboard:
                 
 
 
-        st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade e dia da semana</p>', unsafe_allow_html=True)
         chart = self.grafico_barras(data_chart=df_filter_prioridade)
         st.altair_chart(chart, use_container_width=True)
         st.dataframe(df_filter_prioridade, width=4000) 
