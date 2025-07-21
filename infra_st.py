@@ -14,6 +14,59 @@ class Dashboard:
     
     
     
+    def grafico_barras(self,data_chart):
+
+        # Criar gráfico de barras com Altair
+        bars = (
+            #alt.Chart(data_menos_500)
+            alt.Chart(data_chart)
+            .mark_bar()
+            .encode(
+                x=alt.X(
+                    "prioridade_ba:N",
+                    #sort=alt.EncodingSortField("distancia_km", op="sum", order="descending"),
+                    #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
+                    title="Nome da prioridade",
+                ),
+                y=alt.Y(
+                    "quantidade:Q", title="Quantidade de Prioridades",
+                    sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
+                    
+                
+                ),
+                color="status_distancia:N",
+                tooltip=[
+                    alt.Tooltip("nome_coordenador:N", title="Coordenador"),
+                    alt.Tooltip("status_distancia:N", title="Status de Distância"),
+                    alt.Tooltip("quantidade:Q", title="Quantidade"),
+                    alt.Tooltip("percentual:Q", title="Percentual (%)", format=".2f"),  # Mostrar o percentual
+                ],
+            )
+            .properties(
+                width=3000,
+                #title="Quantidade de Colaboradores por Coordenador e Status de Distância",
+            )
+        )
+        
+        # Adicionar os rótulos de percentual
+        text = (
+            #alt.Chart(data_menos_500)
+            alt.Chart(data_chart)
+            .mark_text(dy=-10, size=10, color="black")  # Ajusta a posição e aparência do texto
+            .encode(
+                x=alt.X("nome_coordenador:N"),
+                y=alt.Y("quantidade:Q"),
+                detail="status_distancia:N",
+                text=alt.Text("percentual:Q", format=".1f"),  # Formatar percentual com uma casa decimal
+            )
+        )
+        
+        # Combinar as barras e os rótulos no gráfico
+        chart = bars + text
+        return chart
+
+
+    
     def streamlit(self):
         
       
@@ -109,6 +162,8 @@ class Dashboard:
 
 
         st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade</p>', unsafe_allow_html=True)
+        chart = self.grafico_barras(data_chart=df_filter_prioridade)
+        st.altair_chart(chart, use_container_width=True)
         st.dataframe(df_filter_prioridade, width=4000) 
 
        
