@@ -16,7 +16,7 @@ class Dashboard:
     
     
     def grafico_barras_prioridade_diaDaSemanaAbertura(self,data_chart,nome_x,nome_y):
-
+        nome_x = 'prioridade_ba'
         # Criar gráfico de barras com Altair
         bars = (
             #alt.Chart(data_menos_500)
@@ -25,7 +25,7 @@ class Dashboard:
             .mark_bar()
             .encode(
                 x=alt.X(
-                    f"prioridade_ba:N",
+                    f"{nome_x}:N",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
                     title="prioridade_ba",
