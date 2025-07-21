@@ -40,7 +40,6 @@ class Dashboard:
                 color=f"{nome_y}:N",
                 tooltip=[
                     alt.Tooltip(f"{nome_y}:N", title=f"{nome_y}"),
-                    #alt.Tooltip("status_distancia:N", title="Status de Distância"),
                     alt.Tooltip("den:Q", title="Quantidade"),
                     #alt.Tooltip("percentual:Q", title="Percentual (%)", format=".2f"),  # Mostrar o percentual
                 ],
@@ -62,7 +61,7 @@ class Dashboard:
                
 
                 y=alt.Y("den:Q", aggregate="sum"),
-                text=alt.Text("den:Q", aggregate="sum", format=".0f"),
+                #text=alt.Text("den:Q", aggregate="sum", format=".0f"),
                 detail="nome_dia_abertura:N"
                 #text=alt.Text("percentual:Q", format=".1f"), #  Formatar percentual com uma casa decimal
             )
