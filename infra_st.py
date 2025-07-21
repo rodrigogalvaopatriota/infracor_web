@@ -28,7 +28,7 @@ class Dashboard:
                     f"{nome_x}:N",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
-                    title=f"{nome_x},
+                    title=f"{nome_x}",
                 ),
                 y=alt.Y(
                     "den:Q", title="Quantidade",
