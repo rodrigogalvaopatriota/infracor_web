@@ -45,6 +45,40 @@ class Dashboard:
                     default=self.df["uf"].unique()  # Seleciona todos os status por padrão
                     
                 )
+
+                filter_regiao = st.multiselect(
+                    "Escolha as regioes",
+                    self.df["regiao"].unique(),
+                    default=self.df["regiao"].unique()  # Seleciona todos os status por padrão
+                    
+                )
+
+                filter_nome_dia_abertura = st.multiselect(
+                    "Escolha os dias de abertura",
+                    self.df["nome_dia_abertura"].unique(),
+                    default=self.df["nome_dia_abertura"].unique()  # Seleciona todos os status por padrão
+                    
+                )
+
+                filter_nome_mes_abertura = st.multiselect(
+                    "Escolha os dias de abertura",
+                    self.df["nome_mes_abertura"].unique(),
+                    default=self.df["nome_mes_abertura"].unique()  # Seleciona todos os status por padrão
+                    
+                )
+                filter_hora_download = st.multiselect(
+                    "Escolha a hora do download",
+                    self.df["hora_download"].unique(),
+                    default=self.df["hora_download"].unique()  # Seleciona todos os status por padrão
+                    
+                )
+
+                filter_minuto_download = st.multiselect(
+                    "Escolha o minuto do download",
+                    self.df["minuto_download"].unique(),
+                    default=self.df["minuto_download"].unique()  # Seleciona todos os status por padrão
+                    
+                )
         
         if not filter_prioridade:
                 st.error("Por favor, selecione pelo menos um filtro.")
@@ -53,7 +87,13 @@ class Dashboard:
              # Filtrar os dados com base nas seleções
                 df_filter_prioridade = self.df[
                     #(df_resultado["Coordenador"].isin(filter_coordenador)) 
-                    (self.df["prioridade_ba"].isin(filter_prioridade))
+                    (self.df["prioridade_ba"].isin(filter_prioridade))&
+                    (self.df["uf"].isin(filter_uf))&
+                    (self.df["regiao"].isin(filter_regiao))&
+                    (self.df["nome_dia_abertura"].isin(filter_nome_dia_abertura))&
+                    (self.df["nome_mes_abertura"].isin(filter_nome_mes_abertura))&
+                    (self.df["hora_download"].isin(filter_hora_download))&
+                    (self.df["minuto_download"].isin(filter_minuto_download))
                     #(df_resultado_coord_area["Coordenador de campo"].isin(filter_coord_campo))
                 ]
 
