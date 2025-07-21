@@ -25,7 +25,7 @@ class Dashboard:
             .mark_bar()
             .encode(
                 x=alt.X(
-                    "prioridade_ba:N",
+                    f"{nome_x}:N",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
                     title="prioridade_ba",
@@ -59,7 +59,7 @@ class Dashboard:
                 x=alt.X("prioridade_ba:N"),
                 y=alt.Y("den:Q"),
                 detail="nome_dia_abertura:N",
-                text=alt.Text("percentual:Q", format=".1f"), #  Formatar percentual com uma casa decimal
+                #text=alt.Text("percentual:Q", format=".1f"), #  Formatar percentual com uma casa decimal
             )
         )
         
