@@ -199,7 +199,13 @@ class Dashboard:
 
         
         st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade e dia da semana</p>', unsafe_allow_html=True)
-        chart = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade,nome_x='prioridade_ba',nome_y='nome_dia_abertura')
+        chart_diaSemana = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade,nome_x='prioridade_ba',nome_y='nome_dia_abertura')
+        st.altair_chart(chart_diaSemana, use_container_width=True)
+        st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade e descricao</p>', unsafe_allow_html=True)
+        chart_descricao = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade,nome_x='prioridade_ba',nome_y='breve_descr_problema')
+        st.altair_chart(chart_descricao, use_container_width=True)
+        
+        
         st.altair_chart(chart, use_container_width=True)
         st.dataframe(df_filter_prioridade, width=4000) 
 
