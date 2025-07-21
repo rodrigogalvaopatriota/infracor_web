@@ -28,7 +28,7 @@ class Dashboard:
                     f"{nome_x}:N",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
-                    title=f"{nome_x}",
+                    title="prioridade_ba",
                 ),
                 y=alt.Y(
                     "den:Q", title="Quantidade",
@@ -36,7 +36,7 @@ class Dashboard:
                     
                 
                 ),
-                color="nome_dia_abertura:N",
+                color=f"{nome_y}:N",
                 tooltip=[
                     alt.Tooltip("nome_dia_abertura:N", title="nome_dia_abertura"),
                     #alt.Tooltip("status_distancia:N", title="Status de Distância"),
