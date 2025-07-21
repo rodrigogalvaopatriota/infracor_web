@@ -16,7 +16,7 @@ class Dashboard:
     
     
     def grafico_barras_prioridade_diaDaSemanaAbertura(self,data_chart,nome_x,nome_y):
-        nome_x = 'prioridade_ba'
+        #nome_x = 'prioridade_ba'
         # Criar gráfico de barras com Altair
         bars = (
             #alt.Chart(data_menos_500)
