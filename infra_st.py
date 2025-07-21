@@ -15,11 +15,12 @@ class Dashboard:
     
     
     
-    def grafico_barras(self,data_chart):
+    def grafico_barras_(self,data_chart):
 
         # Criar gráfico de barras com Altair
         bars = (
             #alt.Chart(data_menos_500)
+            
             alt.Chart(data_chart)
             .mark_bar()
             .encode(
@@ -40,7 +41,7 @@ class Dashboard:
                     alt.Tooltip("nome_dia_abertura:N", title="dia semana abertura"),
                     #alt.Tooltip("status_distancia:N", title="Status de Distância"),
                     alt.Tooltip("den:Q", title="Quantidade"),
-                    alt.Tooltip("percentual:Q", title="Percentual (%)", format=".2f"),  # Mostrar o percentual
+                    #alt.Tooltip("percentual:Q", title="Percentual (%)", format=".2f"),  # Mostrar o percentual
                 ],
             )
             .properties(
@@ -67,6 +68,26 @@ class Dashboard:
         chart = bars
         return chart
 
+
+
+    def grafico_barras(self, data_chart):
+        bars = (
+            alt.Chart(data_chart)
+            .mark_bar()
+            .encode(
+                x=alt.X("prioridade_ba:N", title="Prioridade"),
+                xOffset="nome_dia_abertura:N",  # <--- Essa linha é o segredo para barras lado a lado
+                y=alt.Y("den:Q", title="Quantidade de Prioridades"),
+                color="nome_dia_abertura:N",
+                tooltip=[
+                    alt.Tooltip("nome_dia_abertura:N", title="Dia da Semana Abertura"),
+                    alt.Tooltip("den:Q", title="Quantidade"),
+                ],
+            )
+            .properties(width=3000)
+        )
+
+        return bars
 
     
     def streamlit(self):
