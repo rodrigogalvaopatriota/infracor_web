@@ -33,6 +33,7 @@ class Dashboard:
                 y=alt.Y(
                     "den:Q", title="Quantidade",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
+                    text=alt.Text("den:Q", aggregate="sum", format=".0f")
                     
                 
                 ),
@@ -61,7 +62,7 @@ class Dashboard:
                
 
                 y=alt.Y("den:Q", aggregate="sum"),
-                text=alt.Text("den:Q", aggregate="sum", format=".0f"),
+                #text=alt.Text("den:Q", aggregate="sum", format=".0f"),
                 detail="nome_dia_abertura:N"
                 #text=alt.Text("percentual:Q", format=".1f"), #  Formatar percentual com uma casa decimal
             )
