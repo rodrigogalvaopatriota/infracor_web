@@ -11,7 +11,7 @@ class Dashboard:
         
         #self.df = TreatDataFrame()
         self.df = df = pd.read_excel(f'resultado_bas_corretivos_encerrados_regiao_prioridade.xlsx')
-        self.daf['den'] = self.df['den'].astype(float)
+        self.df['den'] = self.df['den'].astype(float)
     
     
     
