@@ -25,7 +25,7 @@ class Dashboard:
             .mark_bar()
             .encode(
                 x=alt.X(
-                    f"{nome_x}:N",
+                    f"prioridade_ba:N",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
                     title="prioridade_ba",
