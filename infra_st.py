@@ -227,9 +227,9 @@ class Dashboard:
         chart_cos = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade,nome_x='prioridade_ba',nome_y='Cos')
         st.altair_chart(chart_cos, use_container_width=True)
         #Est.
-        #st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade e estação</p>', unsafe_allow_html=True)
-        #chart_estacao = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade,nome_x='prioridade_ba',nome_y='Est.')
-        #st.altair_chart(chart_estacao, use_container_width=True)
+        st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade e estação</p>', unsafe_allow_html=True)
+        chart_estacao = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade,nome_x='prioridade_ba',nome_y='Est.')
+        st.altair_chart(chart_estacao, use_container_width=True)
         
         
        
