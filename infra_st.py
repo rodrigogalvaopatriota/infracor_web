@@ -33,7 +33,7 @@ class Dashboard:
                 y=alt.Y(
                     "den:Q", title="Quantidade",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
-                    text=alt.Text("den:Q", aggregate="sum", format=".0f")
+                    #text=alt.Text("den:Q", aggregate="sum", format=".0f")
                     
                 
                 ),
