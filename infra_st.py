@@ -61,7 +61,7 @@ class Dashboard:
                 )
 
                 filter_nome_mes_abertura = st.multiselect(
-                    "Escolha os dias de abertura",
+                    "Escolha os meses de abertura",
                     self.df["nome_mes_abertura"].unique(),
                     default=self.df["nome_mes_abertura"].unique()  # Seleciona todos os status por padrão
                     
@@ -79,6 +79,13 @@ class Dashboard:
                     default=self.df["minuto_download"].unique()  # Seleciona todos os status por padrão
                     
                 )
+
+                filter_descricao_problema = st.multiselect(
+                    "Escolha a descricao do problema",
+                    self.df["breve_descr_problema"].unique(),
+                    default=self.df["breve_descr_problema"].unique()  # Seleciona todos os status por padrão
+                    
+                )
         
         if not filter_prioridade:
                 st.error("Por favor, selecione pelo menos um filtro.")
@@ -93,22 +100,18 @@ class Dashboard:
                     (self.df["nome_dia_abertura"].isin(filter_nome_dia_abertura))&
                     (self.df["nome_mes_abertura"].isin(filter_nome_mes_abertura))&
                     (self.df["hora_download"].isin(filter_hora_download))&
-                    (self.df["minuto_download"].isin(filter_minuto_download))
+                    (self.df["minuto_download"].isin(filter_minuto_download))&
+                    (self.df["breve_descr_problema"].isin(filter_descricao_problema))
                     #(df_resultado_coord_area["Coordenador de campo"].isin(filter_coord_campo))
                 ]
 
-                df_filter_uf = self.df[
-                    #(df_resultado["Coordenador"].isin(filter_coordenador)) 
-                    (self.df["uf"].isin(filter_uf))
-                    #(df_resultado_coord_area["Coordenador de campo"].isin(filter_coord_campo))
-                ]
+                
 
 
         st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade</p>', unsafe_allow_html=True)
         st.dataframe(df_filter_prioridade, width=4000) 
 
-        st.markdown('<p style="font-size:30px; font-weight:bold;">Uf</p>', unsafe_allow_html=True)
-        st.dataframe(df_filter_uf, width=4000) 
+       
 
  
 def main():
