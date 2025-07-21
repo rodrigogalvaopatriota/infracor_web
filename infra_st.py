@@ -73,8 +73,8 @@ class Dashboard:
          # Criar o gráfico de barras
         chart = alt.Chart(data_chart).mark_bar(color='steelblue').encode(
             x=alt.X("prioridade_ba:N", sort='-y', title="prioridade_ba"),
-            y=alt.Y("nome_dia_abertura:Q", title="Contagem de dias da semana"),
-            tooltip=["prioridade_ba", "nome_dia_abertura"]
+            y=alt.Y("den:Q", title="Contagem de prioridade"),
+            tooltip=["prioridade_ba", "den"]
         ).properties(
             width=800,  # Largura do gráfico
             height=400,  # Altura do gráfico
