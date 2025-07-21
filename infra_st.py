@@ -15,7 +15,7 @@ class Dashboard:
     
     
     
-    def grafico_barras_prioridade_diaDaSemanaAbertura(self,data_chart):
+    def grafico_barras_prioridade_diaDaSemanaAbertura(self,data_chart,nome_x,nome_y):
 
         # Criar gráfico de barras com Altair
         bars = (
@@ -25,20 +25,20 @@ class Dashboard:
             .mark_bar()
             .encode(
                 x=alt.X(
-                    "prioridade_ba:N",
+                    f"{nome_x}:N",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
-                    title="Nome da prioridade",
+                    title=f"{nome_y}",
                 ),
                 y=alt.Y(
-                    "den:Q", title="Quantidade de Prioridades",
+                    "den:Q", title="Quantidade",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     
                 
                 ),
-                color="nome_dia_abertura:N",
+                color=f"{nome_y}:N",
                 tooltip=[
-                    alt.Tooltip("nome_dia_abertura:N", title="dia semana abertura"),
+                    alt.Tooltip(f"{nome_y}:N", title=f"{nome_y}"),
                     #alt.Tooltip("status_distancia:N", title="Status de Distância"),
                     alt.Tooltip("den:Q", title="Quantidade"),
                     #alt.Tooltip("percentual:Q", title="Percentual (%)", format=".2f"),  # Mostrar o percentual
@@ -195,7 +195,7 @@ class Dashboard:
 
         
         st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade e dia da semana</p>', unsafe_allow_html=True)
-        chart = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade)
+        chart = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade,nome_x='prioridade_ba',nome_y='nome_dia_abertura')
         st.altair_chart(chart, use_container_width=True)
         st.dataframe(df_filter_prioridade, width=4000) 
 
