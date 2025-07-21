@@ -93,21 +93,21 @@ class Dashboard:
         )
 
         # Texto com total por prioridade
-        #total_text = (
-            #alt.Chart(data_chart)
-            #.mark_text(
-                #align="center",
-                #dy=-5,  # posiciona o texto logo acima da barra
-                #color="black",
-                #fontSize=12,
-                #fontWeight="bold"
-            #)
-            #.encode(
-                #x=alt.X("prioridade_ba:N"),
-                #y=alt.Y("den:Q", aggregate="sum"),
-                #text=alt.Text("den:Q", aggregate="sum", format=".0f")
-            #)
-        #)
+        total_text = (
+            alt.Chart(data_chart)
+            .mark_text(
+                align="center",
+                dy=-5,  # posiciona o texto logo acima da barra
+                color="black",
+                fontSize=12,
+                fontWeight="bold"
+            )
+            .encode(
+                x=alt.X("prioridade_ba:N"),
+                y=alt.Y("den:Q", aggregate="sum"),
+                text=alt.Text("den:Q", aggregate="sum", format=".0f")
+            )
+        )
 
         # Combinar barras com texto de totais
         #chart = bars + total_text
