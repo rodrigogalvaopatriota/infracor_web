@@ -68,50 +68,18 @@ class Dashboard:
         chart = bars
         return chart
 
-    def grafico_barras(self, data_chart):
-        # Gráfico de barras empilhadas
-        bars = (
-            alt.Chart(data_chart)
-            .mark_bar()
-            .encode(
-                x=alt.X(
-                    "prioridade_ba:N",
-                    title="Nome da prioridade",
-                ),
-                y=alt.Y(
-                    "den:Q",
-                    title="Quantidade de Prioridades",
-                    sort=alt.EncodingSortField("den", op="sum", order="descending"),
-                ),
-                color="nome_dia_abertura:N",
-                tooltip=[
-                    alt.Tooltip("nome_dia_abertura:N", title="Dia da Semana Abertura"),
-                    alt.Tooltip("den:Q", title="Quantidade"),
-                ],
-            )
-            .properties(width=3000)
-        )
+    def grafico_barras_simples(self,data_chart):
 
-        # Texto com total por prioridade
-        total_text = (
-            alt.Chart(data_chart)
-            .mark_text(
-                align="center",
-                dy=-5,  # posiciona o texto logo acima da barra
-                color="black",
-                fontSize=12,
-                fontWeight="bold"
-            )
-            .encode(
-                x=alt.X("prioridade_ba:N"),
-                y=alt.Y("den:Q", aggregate="sum"),
-                text=alt.Text("den:Q", aggregate="sum", format=".0f")
-            )
+         # Criar o gráfico de barras
+        chart = alt.Chart(data_chart).mark_bar(color='steelblue').encode(
+            x=alt.X("prioridade_ba:N", sort='-y', title="prioridade_ba"),
+            y=alt.Y("nome_dia_abertura:Q", title="Contagem de dias da semana"),
+            tooltip=["prioridade_ba", "nome_dia_abertura"]
+        ).properties(
+            width=800,  # Largura do gráfico
+            height=400,  # Altura do gráfico
+            title="Soma dos dias da semana por prioridade"
         )
-
-        # Combinar barras com texto de totais
-        #chart = bars + total_text
-        chart = bars
         return chart
 
 
