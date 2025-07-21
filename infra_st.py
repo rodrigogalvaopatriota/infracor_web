@@ -123,6 +123,7 @@ class Dashboard:
                 )
 
         with st.sidebar:
+                
                 filter_prioridade = st.multiselect(
                     "Escolha as prioridades",
                     self.df["prioridade_ba"].unique(),
@@ -200,7 +201,8 @@ class Dashboard:
                     (self.df["nome_mes_abertura"].isin(filter_nome_mes_abertura))&
                     (self.df["hora_download"].isin(filter_hora_download))&
                     (self.df["minuto_download"].isin(filter_minuto_download))&
-                    (self.df["breve_descr_problema"].isin(filter_descricao_problema))
+                    (self.df["breve_descr_problema"].isin(filter_descricao_problema))&
+                    (self.df["Est."].isin(filter_est))
                     #(df_resultado_coord_area["Coordenador de campo"].isin(filter_coord_campo))
                 ]
          #dia da semana
