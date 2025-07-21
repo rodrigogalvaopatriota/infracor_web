@@ -25,10 +25,10 @@ class Dashboard:
             .mark_bar()
             .encode(
                 x=alt.X(
-                    f"prioridade-ba:N",
+                    "prioridade_ba:N",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
-                    title=f"prioridade_ba",
+                    title="prioridade_ba",
                 ),
                 y=alt.Y(
                     "den:Q", title="Quantidade",
@@ -36,7 +36,7 @@ class Dashboard:
                     
                 
                 ),
-                color=f"nome_dia_abertura:N",
+                color="nome_dia_abertura:N",
                 tooltip=[
                     alt.Tooltip(f"nome_dia_abertura:N", title=f"nome_dia_abertura"),
                     #alt.Tooltip("status_distancia:N", title="Status de Distância"),
