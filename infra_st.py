@@ -26,7 +26,7 @@ class Dashboard:
             .encode(
                 x=alt.X(
                     "prioridade_ba:N",
-                    #sort=alt.EncodingSortField("distancia_km", op="sum", order="descending"),
+                    sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
                     title="Nome da prioridade",
                 ),
@@ -51,21 +51,21 @@ class Dashboard:
         )
         
         # Adicionar os rótulos de percentual
-        #text = (
+        text = (
             
-            #alt.Chart(data_chart)
-            #.mark_text(dy=-10, size=10, color="black")  # Ajusta a posição e aparência do texto
-            #.encode(
-                #x=alt.X("prioridade_ba:N"),
-                #y=alt.Y("den:Q"),
-                #detail="nome_dia_abertura:N",
-                #text=alt.Text("percentual:Q", format=".1f"),  # Formatar percentual com uma casa decimal
-            #)
-        #)
+            alt.Chart(data_chart)
+            .mark_text(dy=-10, size=10, color="black")  # Ajusta a posição e aparência do texto
+            .encode(
+                x=alt.X("prioridade_ba:N"),
+                y=alt.Y("den:Q"),
+                detail="nome_dia_abertura:N",
+                text=alt.Text("percentual:Q", format=".1f"), #  Formatar percentual com uma casa decimal
+            )
+        )
         
         # Combinar as barras e os rótulos no gráfico
-        #chart = bars + text
-        chart = bars
+        chart = bars + text
+        #chart = bars
         return chart
 
     def grafico_barras(self,data_chart):
@@ -104,9 +104,7 @@ class Dashboard:
 
     
     def streamlit(self):
-        
-      
-        
+              
         st.set_page_config(
             page_title="Infra cor Icomon",
             page_icon="📊",
@@ -155,6 +153,7 @@ class Dashboard:
                     default=self.df["nome_mes_abertura"].unique()  # Seleciona todos os status por padrão
                     
                 )
+                
                 filter_hora_download = st.multiselect(
                     "Escolha a hora do download",
                     self.df["hora_download"].unique(),
@@ -194,9 +193,7 @@ class Dashboard:
                     #(df_resultado_coord_area["Coordenador de campo"].isin(filter_coord_campo))
                 ]
 
-                
-
-
+        
         st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade e dia da semana</p>', unsafe_allow_html=True)
         chart = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade)
         st.altair_chart(chart, use_container_width=True)
