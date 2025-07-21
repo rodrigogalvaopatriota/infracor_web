@@ -206,7 +206,7 @@ class Dashboard:
         st.altair_chart(chart_descricao, use_container_width=True)
         
         
-        st.altair_chart(chart, use_container_width=True)
+       
         st.dataframe(df_filter_prioridade, width=4000) 
 
        
