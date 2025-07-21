@@ -50,20 +50,21 @@ class Dashboard:
         )
         
         # Adicionar os rótulos de percentual
-        text = (
-            #alt.Chart(data_menos_500)
-            alt.Chart(data_chart)
-            .mark_text(dy=-10, size=10, color="black")  # Ajusta a posição e aparência do texto
-            .encode(
-                x=alt.X("prioridade_ba:N"),
-                y=alt.Y("den:Q"),
-                detail="nome_dia_abertura:N",
-                text=alt.Text("percentual:Q", format=".1f"),  # Formatar percentual com uma casa decimal
-            )
-        )
+        #text = (
+            
+            #alt.Chart(data_chart)
+            #.mark_text(dy=-10, size=10, color="black")  # Ajusta a posição e aparência do texto
+            #.encode(
+                #x=alt.X("prioridade_ba:N"),
+                #y=alt.Y("den:Q"),
+                #detail="nome_dia_abertura:N",
+                #text=alt.Text("percentual:Q", format=".1f"),  # Formatar percentual com uma casa decimal
+            #)
+        #)
         
         # Combinar as barras e os rótulos no gráfico
-        chart = bars + text
+        #chart = bars + text
+        chart = bars
         return chart
 
 
