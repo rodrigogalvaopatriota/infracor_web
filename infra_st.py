@@ -15,7 +15,7 @@ class Dashboard:
     
     
     
-    def grafico_barras_x(self,data_chart):
+    def grafico_barras_prioridade_diaDaSemanaAbertura(self,data_chart):
 
         # Criar gráfico de barras com Altair
         bars = (
@@ -198,7 +198,7 @@ class Dashboard:
 
 
         st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade e dia da semana</p>', unsafe_allow_html=True)
-        chart = self.grafico_barras(data_chart=df_filter_prioridade)
+        chart = self.grafico_barras_prioridade_diaDaSemanaAbertura(data_chart=df_filter_prioridade)
         st.altair_chart(chart, use_container_width=True)
         st.dataframe(df_filter_prioridade, width=4000) 
 
