@@ -29,16 +29,16 @@ class Dashboard:
                     title="Nome da prioridade",
                 ),
                 y=alt.Y(
-                    "quantidade:Q", title="Quantidade de Prioridades",
-                    sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
+                    "den:Q", title="Quantidade de Prioridades",
+                    sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     
                 
                 ),
                 color="status_distancia:N",
                 tooltip=[
-                    alt.Tooltip("nome_coordenador:N", title="Coordenador"),
-                    alt.Tooltip("status_distancia:N", title="Status de Distância"),
-                    alt.Tooltip("quantidade:Q", title="Quantidade"),
+                    alt.Tooltip("nome_dia_abertura:N", title="dia semana abertura"),
+                    #alt.Tooltip("status_distancia:N", title="Status de Distância"),
+                    alt.Tooltip("den:Q", title="Quantidade"),
                     alt.Tooltip("percentual:Q", title="Percentual (%)", format=".2f"),  # Mostrar o percentual
                 ],
             )
