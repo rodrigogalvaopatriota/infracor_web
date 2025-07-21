@@ -15,7 +15,7 @@ class Dashboard:
     
     
     
-    def grafico_barras_(self,data_chart):
+    def grafico_barras(self,data_chart):
 
         # Criar gráfico de barras com Altair
         bars = (
@@ -70,7 +70,7 @@ class Dashboard:
 
 
 
-    def grafico_barras(self, data_chart):
+    def grafico_barras_(self, data_chart):
         bars = (
             alt.Chart(data_chart)
             .mark_bar()
