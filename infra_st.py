@@ -38,7 +38,7 @@ class Dashboard:
                 ),
                 color=f"{nome_y}:N",
                 tooltip=[
-                    alt.Tooltip("nome_dia_abertura:N", title="nome_dia_abertura"),
+                    alt.Tooltip(f"{nome_y}:N", title="nome_dia_abertura"),
                     #alt.Tooltip("status_distancia:N", title="Status de Distância"),
                     alt.Tooltip("den:Q", title="Quantidade"),
                     #alt.Tooltip("percentual:Q", title="Percentual (%)", format=".2f"),  # Mostrar o percentual
