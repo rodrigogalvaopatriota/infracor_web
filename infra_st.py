@@ -162,8 +162,8 @@ class Dashboard:
 
 
         st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade</p>', unsafe_allow_html=True)
-        chart = self.grafico_barras(data_chart=df_filter_prioridade)
-        st.altair_chart(chart, use_container_width=True)
+        #chart = self.grafico_barras(data_chart=df_filter_prioridade)
+        #st.altair_chart(chart, use_container_width=True)
         st.dataframe(df_filter_prioridade, width=4000) 
 
        
