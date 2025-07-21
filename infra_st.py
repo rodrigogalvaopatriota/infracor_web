@@ -68,7 +68,7 @@ class Dashboard:
         chart = bars
         return chart
 
-    def grafico_barras_simples(self,data_chart):
+    def grafico_barras(self,data_chart):
 
          # Criar o gráfico de barras
         chart = alt.Chart(data_chart).mark_bar(color='steelblue').encode(
