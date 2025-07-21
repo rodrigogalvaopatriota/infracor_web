@@ -58,10 +58,11 @@ class Dashboard:
             .encode(
                 x=alt.X("prioridade_ba:N"),
                 #y=alt.Y("den:Q"),
-                detail="nome_dia_abertura:N",
+               
 
                 y=alt.Y("den:Q", aggregate="sum"),
-                text=alt.Text("den:Q", aggregate="sum", format=".0f")
+                text=alt.Text("den:Q", aggregate="sum", format=".0f"),
+                detail="nome_dia_abertura:N",
                 #text=alt.Text("percentual:Q", format=".1f"), #  Formatar percentual com uma casa decimal
             )
         )
