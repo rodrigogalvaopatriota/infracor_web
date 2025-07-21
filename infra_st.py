@@ -25,10 +25,10 @@ class Dashboard:
             .mark_bar()
             .encode(
                 x=alt.X(
-                    f"{nome_x}:N",
+                    f"prioridade-ba:N",
                     sort=alt.EncodingSortField("den", op="sum", order="descending"),
                     #sort=alt.EncodingSortField("quantidade", op="sum", order="descending"),
-                    title=f"{nome_y}",
+                    title=f"prioridade_ba",
                 ),
                 y=alt.Y(
                     "den:Q", title="Quantidade",
@@ -36,9 +36,9 @@ class Dashboard:
                     
                 
                 ),
-                color=f"{nome_y}:N",
+                color=f"nome_dia_abertura:N",
                 tooltip=[
-                    alt.Tooltip(f"{nome_y}:N", title=f"{nome_y}"),
+                    alt.Tooltip(f"nome_dia_abertura:N", title=f"nome_dia_abertura"),
                     #alt.Tooltip("status_distancia:N", title="Status de Distância"),
                     alt.Tooltip("den:Q", title="Quantidade"),
                     #alt.Tooltip("percentual:Q", title="Percentual (%)", format=".2f"),  # Mostrar o percentual
