@@ -34,7 +34,7 @@ class Dashboard:
                     
                 
                 ),
-                color="status_distancia:N",
+                color="nome_dia_abertura:N",
                 tooltip=[
                     alt.Tooltip("nome_dia_abertura:N", title="dia semana abertura"),
                     #alt.Tooltip("status_distancia:N", title="Status de Distância"),
@@ -54,9 +54,9 @@ class Dashboard:
             alt.Chart(data_chart)
             .mark_text(dy=-10, size=10, color="black")  # Ajusta a posição e aparência do texto
             .encode(
-                x=alt.X("nome_coordenador:N"),
-                y=alt.Y("quantidade:Q"),
-                detail="status_distancia:N",
+                x=alt.X("prioridade_ba:N"),
+                y=alt.Y("den:Q"),
+                detail="nome_dia_abertura:N",
                 text=alt.Text("percentual:Q", format=".1f"),  # Formatar percentual com uma casa decimal
             )
         )
@@ -162,8 +162,8 @@ class Dashboard:
 
 
         st.markdown('<p style="font-size:30px; font-weight:bold;">Prioridade</p>', unsafe_allow_html=True)
-        #chart = self.grafico_barras(data_chart=df_filter_prioridade)
-        #st.altair_chart(chart, use_container_width=True)
+        chart = self.grafico_barras(data_chart=df_filter_prioridade)
+        st.altair_chart(chart, use_container_width=True)
         st.dataframe(df_filter_prioridade, width=4000) 
 
        
