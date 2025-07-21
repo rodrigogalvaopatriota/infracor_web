@@ -124,7 +124,7 @@ class Dashboard:
 
         with st.sidebar:
                 filter_prioridade = st.multiselect(
-                    "Escolha os ",
+                    "Escolha as prioridades",
                     self.df["prioridade_ba"].unique(),
                     default=self.df["prioridade_ba"].unique()  # Seleciona todos os status por padrão
                     
@@ -176,6 +176,13 @@ class Dashboard:
                     "Escolha a descricao do problema",
                     self.df["breve_descr_problema"].unique(),
                     default=self.df["breve_descr_problema"].unique()  # Seleciona todos os status por padrão
+                    
+                )
+
+                filter_est = st.multiselect(
+                    "Escolha a Estação",
+                    self.df["Est."].unique(),
+                    default=self.df["Est."].unique()  # Seleciona todos os status por padrão
                     
                 )
         
